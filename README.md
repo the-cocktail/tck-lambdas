@@ -50,10 +50,15 @@ Por lo tanto, si todo ha ido bien deberíamos poder lanzar los tests de nuestra 
 
     $ rake tck_lambdas:contact_form:test
 
-El código de la _lambda_ lo tenemos dentro de *tck_lambdas/contact_form/source* y para añadir una mejora al mismo debemos seguir los siguientes pasos para desplegarla:
+El código de la _lambda_ lo tenemos dentro de *tck_lambdas/contact_form/source* y para añadir una mejora al mismo debemos seguir los siguientes pasos de cara a desplegarla:
 
-0. Escribir la mejora
-1. Crear el _zip_: ``rake tck_lambdas:contact_form:create_zip``,
-2. Subir el nuevo _zip_ a la _lambda_ de tests: ``rake tck_lambdas:contact_form:upload_test``,
-3. Lanzar los tests: ``rake tck_lambdas:contact_form:test`` volviendo al _paso 0_ si no pasan,
-4. Actualizar la _lambda_ de producción: ``rake tck_lambdas:contact_form:upload_zip``.
+1. Escribir la mejora
+2. Crear el _zip_:
+  ``rake tck_lambdas:contact_form:create_zip``
+3. Subir el nuevo _zip_ a la _lambda_ de tests:
+  ``rake tck_lambdas:contact_form:upload_test``
+4. Lanzar los tests:
+  ``rake tck_lambdas:contact_form:test``
+  ...volviendo al primer paso si no pasan,
+5. Actualizar la _lambda_ de producción:
+  ``rake tck_lambdas:contact_form:upload_zip``
