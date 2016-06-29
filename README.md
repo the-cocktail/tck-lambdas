@@ -18,7 +18,7 @@ Si sólo tenemos esa _lambda_, creando el _alias_ necesario en nuestro _Rakefile
 
 Ejemplo de Uso
 ---
-Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda* llamada de forma genérica *contact_form*. Instalamos la _gema TckLambdas_ y he indicamos que nuestro proyecto hace uso de dicha _lambda_:
+Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda contact_form*. Instalamos la _gema TckLambdas_ y le indicamos que nuestro proyecto hace uso de la _lambda_ llamada *contact_form*:
 
     $ echo "gem 'tck-lambdas'" >> Gemfile # Metemos la gema en nuestro Gemfile...
     $ bundle                              #  - la instalamos y...
@@ -44,7 +44,7 @@ Con dichos cambios en nuestro *.tck_lambdas.yml* ejecutamos la siguiente tarea d
 
     $ rake tck_lambdas:contact_form:create_lambda
 
-Dicha orden nos creará, además de la función _lambda_ necesaria para el entorno de producción, **otra con el mismo nombre** terminada en *_test* **para la ejecución de sus tests** (en nuestro ejemplo deberíamos tener dos nuevas funciones llamadas *amazing_contact_form* y *amazing_contact_form_test*).
+Dicha orden nos creará, además de la función _lambda_ necesaria para el entorno de producción, **otra con el mismo nombre** terminada en *_test* **para la ejecución de sus tests** (en nuestro ejemplo si lanzamos ``aws lambda list-functions`` deberíamos tener dos nuevas funciones llamadas *amazing_contact_form* y *amazing_contact_form_test*).
 
 Por lo tanto, si todo ha ido bien deberíamos poder lanzar los tests de nuestra _lambda_ con éxito:
 
