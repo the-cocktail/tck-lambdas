@@ -8,7 +8,7 @@ Si hemos instalado la gema _TckLambdas_ en nuestro proyecto y hemos indicado en 
 
     $ rake tck_lambdas:shine:create_zip
 
-Y esta para subirlo a _AWS Lambda_ ("desplegarla"):
+Y esta para subir el mismo a _AWS Lambda_ (para _"desplegar"_ la mejora):
 
     $ rake tck_lambdas:shine:upload_zip
 
@@ -18,7 +18,7 @@ Si sólo tenemos esa _lambda_, creando el _alias_ necesario en nuestro _Rakefile
 
 Ejemplo de Uso
 ---
-Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda* llamada de forma genérica *contact_form*. Instalamos la _gema TckLambdas_ y dicha _lambda_:
+Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda* llamada de forma genérica *contact_form*. Instalamos la _gema TckLambdas_ y he indicamos que nuestro proyecto hace uso de dicha _lambda_:
 
     $ echo "gem 'tck-lambdas'" >> Gemfile # Metemos la gema en nuestro Gemfile...
     $ bundle                              #  - la instalamos y...
