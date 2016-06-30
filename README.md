@@ -44,7 +44,7 @@ Con dichos cambios en nuestro *.tck_lambdas.yml* ejecutamos la siguiente tarea d
 
     $ rake tck_lambdas:contact_form:create_lambda
 
-Dicha orden nos creará, además de la función _lambda_ necesaria para el entorno de producción, **otra con el mismo nombre** terminada en *_test* **para la ejecución de sus tests** (en nuestro ejemplo si lanzamos ``aws lambda list-functions`` deberíamos tener dos nuevas funciones llamadas *amazing_contact_form* y *amazing_contact_form_test*).
+Dicha orden nos creará, **además de la función _lambda_** necesaria para el entorno de producción, **otra con el mismo nombre terminada en *_test* para la ejecución de sus tests** (en nuestro ejemplo si lanzamos ``aws lambda list-functions`` deberíamos tener dos nuevas funciones llamadas *amazing_contact_form* y *amazing_contact_form_test*).
 
 Por lo tanto, si todo ha ido bien deberíamos poder lanzar los tests de nuestra _lambda_ con éxito:
 
@@ -59,6 +59,6 @@ El código de la _lambda_ lo tenemos dentro de *tck_lambdas/contact_form/source*
   ``rake tck_lambdas:contact_form:upload_test``
 4. Lanzar los tests:
   ``rake tck_lambdas:contact_form:test``
-  ...volviendo al primer paso si no pasan,
+  (...volviendo al primer paso hasta que pasen),
 5. Actualizar la _lambda_ de producción:
   ``rake tck_lambdas:contact_form:upload_zip``
