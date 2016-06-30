@@ -16,8 +16,9 @@ Si sólo tenemos esa _lambda_, creando el _alias_ necesario en nuestro _Rakefile
 
     $ rake deploy_lambda
 
-Ejemplo de Uso
----
+Usando una _lambda_
+-------------------
+
 Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda contact_form*. Instalamos la _gema TckLambdas_ y le indicamos que nuestro proyecto hace uso de la _lambda_ llamada *contact_form*:
 
     $ echo "gem 'tck-lambdas'" >> Gemfile # Metemos la gema en nuestro Gemfile...
@@ -49,6 +50,9 @@ Dicha orden nos creará, **además de la función _lambda_** necesaria para el e
 Por lo tanto, si todo ha ido bien deberíamos poder lanzar los tests de nuestra _lambda_ con éxito:
 
     $ rake tck_lambdas:contact_form:test
+
+Modificando una _lambda_
+------------------------
 
 El código de la _lambda_ lo tenemos dentro de *tck_lambdas/contact_form/source* y para añadir una mejora al mismo debemos seguir los siguientes pasos de cara a desplegarla:
 
