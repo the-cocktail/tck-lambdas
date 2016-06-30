@@ -1,10 +1,10 @@
-TckLambdas
-==========
-_TckLambdas_ es una _gema_ que facilita la utilización de una _AWS Lambda_ en el contexto de un proyecto _Ruby_ introduciendo en el mismo tareas de _Rake_ que realizan las **órdenes AWS** que debemos ejecutar habitualmente desde la _línea de comandos_.
+# Tck::Lambdas
+
+_Tck::Lambdas_ es una _gema_ que facilita la utilización de una _AWS Lambda_ en el contexto de un proyecto _Ruby_ introduciendo en el mismo tareas de _Rake_ que realizan las **órdenes AWS** que debemos ejecutar habitualmente desde la _línea de comandos_.
 
 Por ejemplo, si tenemos una _función lambda_ llamada **shine** y queremos subir una mejora en su código tendríamos que, por un lado generar el _zip_ con dicha mejora, y por otro actualizar el mismo en _AWS Lambda_ (con la función ``aws lambda update-function-code`` o a través de su consola web).
     
-Si hemos instalado la gema _TckLambdas_ en nuestro proyecto y hemos indicado en que el mismo hace uso de la _lambda shine_ (``tck_lambdas use shine``), lanzaríamos la siguiente orden para crear el _zip_:
+Si hemos instalado la gema _Tck::Lambdas_ en nuestro proyecto y hemos indicado en que el mismo hace uso de la _lambda shine_ (``tck_lambdas use shine``), lanzaríamos la siguiente orden para crear el _zip_:
 
     $ rake tck_lambdas:shine:create_zip
 
@@ -19,7 +19,7 @@ Si sólo tenemos esa _lambda_, creando el _alias_ necesario en nuestro _Rakefile
 Usando una _lambda_
 -------------------
 
-Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda contact_form*. Instalamos la _gema TckLambdas_ y le indicamos que nuestro proyecto hace uso de la _lambda_ llamada *contact_form*:
+Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda contact_form*. Instalamos la _gema Tck::Lambdas_ y le indicamos que nuestro proyecto hace uso de la _lambda_ llamada *contact_form*:
 
     $ echo "gem 'tck-lambdas'" >> Gemfile # Metemos la gema en nuestro Gemfile...
     $ bundle                              #  - la instalamos y...
@@ -75,3 +75,28 @@ Los pasos 2, 3 y 4 son implementados por la tarea **:build_lambda**, lo que nos 
  (...hasta que pasen los tests)
 3. Actualizar la _lambda_ de producción:
   ``rake tck_lambdas:contact_form:upload_zip``
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'tck-lambdas'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install tck-lambdas
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tck-lambdas. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
