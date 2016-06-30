@@ -63,6 +63,15 @@ El código de la _lambda_ lo tenemos dentro de *tck_lambdas/contact_form/source*
   ``rake tck_lambdas:contact_form:upload_test``
 4. Lanzar los tests:
   ``rake tck_lambdas:contact_form:test``
-  (...volviendo al primer paso hasta que pasen),
+  (...volviendo al primer paso hasta que pasen)
 5. Actualizar la _lambda_ de producción:
+  ``rake tck_lambdas:contact_form:upload_zip``
+
+Los pasos 2, 3 y 4 son implementados por la tarea **:build_lambda**, lo que nos permite reducir los pasos necesarios a 3:
+
+1. Escribir la mejora
+2. Lanzar el _build_:
+  ``rake tck_lambdas:contact_form:build_lambda``
+ (...hasta que pasen los tests)
+3. Actualizar la _lambda_ de producción:
   ``rake tck_lambdas:contact_form:upload_zip``
