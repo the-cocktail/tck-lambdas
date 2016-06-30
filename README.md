@@ -4,7 +4,7 @@ _Tck::Lambdas_ es una _gema_ que facilita la utilización de una _AWS Lambda_ en
 
 Por ejemplo, si tenemos una _función lambda_ llamada **shine** y queremos subir una mejora en su código tendríamos que, por un lado generar el _zip_ con dicha mejora, y por otro actualizar el mismo en _AWS Lambda_ (con la función ``aws lambda update-function-code`` o a través de su consola web).
     
-Si hemos instalado la gema _Tck::Lambdas_ en nuestro proyecto y hemos indicado en que el mismo hace uso de la _lambda shine_ (``tck-lambdas use shine``), lanzaríamos la siguiente orden para crear el _zip_:
+Si hemos instalado la gema _Tck::Lambdas_ en nuestro proyecto y hemos indicado en que el mismo hace uso de la _lambda shine_ (bundle exec ``tck-lambdas use shine``), lanzaríamos la siguiente orden para crear el _zip_:
 
     $ rake lambdas:shine:create_zip
 
@@ -21,9 +21,9 @@ Usando una _lambda_
 
 Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda contact_form*. Instalamos la _gema Tck::Lambdas_ y le indicamos que nuestro proyecto hace uso de la _lambda_ llamada *contact_form*:
 
-    $ echo "gem 'tck-lambdas'" >> Gemfile # Metemos la gema en nuestro Gemfile...
-    $ bundle                              #  - la instalamos y...
-    $ tck-lambdas use contact_form        #  - y usamos la lambda:
+    $ echo "gem 'tck-lambdas'" >> Gemfile      # Metemos la gema en nuestro Gemfile...
+    $ bundle                                   #  - la instalamos y...
+    $ bundle exec tck-lambdas use contact_form #  - y usamos la lambda:
     => lambdas/contact_form/ created with the lambda sources & tests.
     => task/lambdas/contact_form.rake created with common tasks.
     => .lambdas.yml created with the contact_form lambda conf.
