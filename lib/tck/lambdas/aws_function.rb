@@ -14,7 +14,7 @@ module Tck
       end
 
       def test_function_name
-        "test_#{@conf['function-name']}"
+        "#{@conf['function-name']}_test"
       end
 
       def method_missing(method, *args, &block)  
