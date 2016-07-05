@@ -37,9 +37,14 @@ Tal y como nos avisa ha creado, entre otras cosas, el fichero *.lambdas.yml* con
       memory-size: 128
       runtime: nodejs4.3
       role: lambda_contact_form_role
-      description: Lambda to manage new submissions in this project's contact form
 
-Todos los valores por defecto deberían ser válidos excepto el nombre de la función (_function-name_) y el de su manejador (_handler_), en los que tendremos que sustituir *tck_project* por el nombre de nuestro proyecto (quedándonos con *amazing_contact_form* y *amazing_contact_form.handler* respectivamente).
+Todos los valores por defecto deberían ser válidos excepto el nombre de la función (_function-name_), su manejador (_handler_), y su role.
+
+En el nombre del la función y su manejador tenemos que sustituir *tck_project* por el nombre de nuestro proyecto (quedándonos con *amazing_contact_form* y *amazing_contact_form.handler* respectivamente).
+
+El role tenemos que sustituirlo por el que corresponda de los que nos devuelve AWS:
+
+    aws iam list-roles --query "Roles[].[RoleName,Arn]"
 
 Con dichos cambios en nuestro *.lambdas.yml* ejecutamos la siguiente tarea de _rake_:
 

@@ -1,0 +1,8 @@
+# The Cockatil's AWS Lambda functions configuration
+<%= @lambda.name %>:
+  function-name: project_name_<%= @lambda.name %>
+  handler: project_name_<%= @lambda.name %>.handler
+  timeout: 30
+  memory-size: 128
+  runtime: nodejs4.3
+  role: lambda_<%= @lambda.name %>_role

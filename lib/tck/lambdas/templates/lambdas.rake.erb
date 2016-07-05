@@ -1,0 +1,36 @@
+namespace :tck_lambdas do
+  namespace :<%= @lambda.name %> do
+    desc "Generate lambda's ZIP file w/ source/* code"
+    task :create_zip do
+      tck_lambda = Tck::Lambdas::AwsFunction.new(:<%= @lambda.name %>)
+      puts "Creating #{tck_lambda.zip_file}..."
+      FileUtils.rm(tck_lambda.zip_file, force: true)
+      puts `cd #{tck_lambda.dir}/source && zip -r #{tck_lambda.zip_file} *`
+    end
+
+    desc "Create the <%= @lambda.name %> lambda function in AWS Lambda w/ .lambda.yml."
+    task create_lambda: :create_zip do
+      tck_lambda = Tck::Lambdas::AwsFunction.new(:<%= @lambda.name %>)
+      puts "\n#{tck_lambda.function_name} & #{tck_lambda.test_function_name} lambdas will be created with:"
+      puts "\n  #{tck_lambda.zip_file}\n\n...using the following parameters read from current .lambdas.yml:"
+      tck_lambda.conf.each do |prop, value|
+        puts "    - #{prop}: #{value}"
+      end
+      []
+      printf "\nContinue?? Press [Ctrl+C] to cancel."
+      STDIN.gets
+      [tck_lambda.function_name, tck_lambda.test_function_name].each do |function_name|
+        params = "--function-name #{function_name} " <<
+                 "--handler #{tck_lambda.handler} " <<
+                 "--runtime #{tck_lambda.runtime} " <<
+                 "--role #{tck_lambda.role} " <<
+                 "--memory-size #{tck_lambda.memory_size} " <<
+                 "--timeout #{tck_lambda.timeout} " <<
+                 "--zip-file fileb://#{tck_lambda.zip_file}"
+        cmd = "aws lambda create-function #{params}"
+        puts cmd
+        puts `#{cmd}`
+      end
+    end
+  end
+end

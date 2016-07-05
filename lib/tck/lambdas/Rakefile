@@ -1,0 +1,2 @@
+require_relative "lib/tck/lambdas/aws_function"
+load "lib/tasks/lambdas.rake"
