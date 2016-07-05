@@ -26,6 +26,7 @@ namespace :tck_lambdas do
                  "--role #{tck_lambda.role} " <<
                  "--memory-size #{tck_lambda.memory_size} " <<
                  "--timeout #{tck_lambda.timeout} " <<
+                 "--description \"#{tck_lambda.description}\" " <<
                  "--zip-file fileb://#{tck_lambda.zip_file}"
         cmd = "aws lambda create-function #{params}"
         puts cmd
