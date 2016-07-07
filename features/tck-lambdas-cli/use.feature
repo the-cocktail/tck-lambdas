@@ -6,6 +6,6 @@ So that i can manage it with tck-lambdas tasks
 
 Scenario: Trying to add an non-existent lambda
   Given my project has the tck-lambdas gem installed
-  When i run "tck-lambdas use iwannaexists"
+  When i run "tck-lambdas use iwannaexist"
   Then the command fails
-   And the message contains "not found"
+   And the output contains "not found"
