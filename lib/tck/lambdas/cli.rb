@@ -11,6 +11,17 @@ module Tck
         File.dirname(__FILE__)
       end
 
+      desc "list", "List currently used functions in AWS Lambda."
+      def list
+        if yaml = Tck::Lambdas::AwsFunction.yaml
+          yaml.each do |lambda_name, properties|
+            puts " - #{properties["function-name"]} (cloned from '#{lambda_name}')"
+          end
+        else
+          puts "No lambdas found in this directory... :("
+        end
+      end
+
       desc "use NAME", "Use the AWS Lambda function known as NAME at The Cocktail."
       def use(name)
         puts "#{CLI.source_root}/#{name}"

@@ -12,6 +12,10 @@ module Tck
         @tmpdir ||= Dir.tmpdir + "/tck_lambdas"
       end
 
+      def self.yaml
+        @yaml ||= File.exist?('.lambdas.yml') ? YAML.load_file('.lambdas.yml') : nil
+      end
+
       def self.clean_tmps!
         FileUtils.mkdir_p tmpdir
         FileUtils.rm_rf Dir.glob("#{tmpdir}/*")
@@ -61,10 +65,8 @@ puts "lambdas/#{name}/#{event_type}/*.json"
         `#{cmd}`
       end
 
-      private
-
       def yaml
-        File.exist?('.lambdas.yml') ? YAML.load_file('.lambdas.yml') : {}
+        self.yaml
       end
     end
   end
