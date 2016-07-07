@@ -8,6 +8,15 @@ module Tck
       attr_reader :name
       attr_reader :conf
 
+      def self.tmpdir
+        @tmpdir ||= Dir.tmpdir + "/tck_lambdas"
+      end
+
+      def self.clean_tmps!
+        FileUtils.mkdir_p tmpdir
+        FileUtils.rm_rf Dir.glob("#{tmpdir}/*")
+      end
+
       def initialize(name)
         @name = name.to_s
         @conf = yaml[@name]
@@ -27,11 +36,29 @@ module Tck
       end
 
       def tmpdir
-        @tmpdir ||= Dir.tmpdir
+        self.class.tmpdir
       end
 
       def zip_file
         @zip_file ||= "#{tmpdir}/#{function_name}.zip"
+      end
+
+      def invoke_events_in_directory(event_type)
+puts "lambdas/#{name}/#{event_type}/*.json"
+        Dir["lambdas/#{name}/test/#{event_type}/*.json"].each do |json_file|
+          filename = File.basename(json_file)
+          output = "#{tmpdir}/#{filename}.output"
+          invoke_lambda json_file, output
+          yield filename, File.read(output)
+        end
+      end
+
+      def invoke_lambda(payload_file, output_file)
+        cmd = "aws lambda invoke " <<
+                "--function-name #{@conf['function-name']}_test " <<
+                "--payload file://#{payload_file} #{output_file}"
+        puts "$ #{cmd}"
+        `#{cmd}`
       end
 
       private

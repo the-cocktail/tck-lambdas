@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+group [:development, :test] do
+  gem "rake"
+  gem "tck-lambdas"
+end
+
+group :test do
+  gem "minitest"
+end

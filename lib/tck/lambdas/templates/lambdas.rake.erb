@@ -1,11 +1,18 @@
-namespace :tck_lambdas do
+namespace :lambdas do
   namespace :<%= @lambda.name %> do
+    task test: "lambdas:test"
+ 
     desc "Generate lambda's ZIP file w/ source/* code"
     task :create_zip do
       tck_lambda = Tck::Lambdas::AwsFunction.new(:<%= @lambda.name %>)
       puts "Creating #{tck_lambda.zip_file}..."
       FileUtils.rm(tck_lambda.zip_file, force: true)
-      puts `cd #{tck_lambda.dir}/source && zip -r #{tck_lambda.zip_file} *`
+      cmd = "cd #{tck_lambda.dir}/source &&\\\n" <<
+            "mv #{tck_lambda.name}.js #{tck_lambda.function_name}.js &&\\\n" <<
+            "zip -r #{tck_lambda.zip_file} * &&\\\n" <<
+            "mv #{tck_lambda.function_name}.js #{tck_lambda.name}.js"
+      puts cmd
+      puts `#{cmd}`
     end
 
     desc "Create the <%= @lambda.name %> lambda function in AWS Lambda w/ .lambda.yml."

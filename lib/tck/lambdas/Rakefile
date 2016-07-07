@@ -1,2 +1,12 @@
+# Copyright 2016 The Cocktail Experience, S.L.
+require "rake/testtask"
+
 require_relative "lib/tck/lambdas/aws_function"
 load "lib/tasks/lambdas.rake"
+
+namespace :lambdas do
+  Rake::TestTask.new(:test) do |t|
+    t.libs = %w(lib)
+    t.pattern = "lambdas/test.rb"
+  end
+end
