@@ -10,6 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["fernando.garcia@the-cocktail.com"]
 
   spec.summary       = %q{The Cocktail's AWS Lambda functions manager.}
+  spec.description   = %q{A Ruby's Rake wrapper over the *aws lambda* CLI (aws-cli/1.10.37).}
   spec.homepage      = "https://github.com/the-cocktail/tck-lambdas"
   spec.license       = "MIT"
 
