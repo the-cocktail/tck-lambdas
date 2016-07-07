@@ -1,4 +1,4 @@
-Feature: Developer use a new AWS Lambda function in her/his app.
+Feature: Developer uses a new AWS Lambda function in her/his app.
 
 As a developer using AWS Lambda's functions
 I want to add a lambda to my current project
