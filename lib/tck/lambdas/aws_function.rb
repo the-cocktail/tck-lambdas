@@ -66,7 +66,7 @@ puts "lambdas/#{name}/#{event_type}/*.json"
       end
 
       def yaml
-        self.yaml
+        self.class.yaml
       end
     end
   end
