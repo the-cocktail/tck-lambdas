@@ -23,7 +23,7 @@ module Tck
 
       def initialize(name)
         @name = name.to_s
-        @conf = yaml[@name]
+        @conf = yaml ? yaml[@name] : {}
       end
 
       def test_function_name
