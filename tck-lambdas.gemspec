@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
                Dir["exe/*"] +
                [
                  File.join("lib", "tck", "lambdas", "Rakefile"),
-                 File.join("lib", "tck", "lambdas", "Gemfile"),
+                 File.join("lib", "tck", "lambdas", "Gemfile.example"),
                  "README.md",
                  "LICENSE"
                ]
