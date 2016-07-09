@@ -5,7 +5,11 @@ Given(/^i have the AWS CLI installed in my system$/) do
 end
 
 Given(/^i have the right crendentials in \.aws\/credentials$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  cmd = "aws lambda list-functions --max-items 0"
+  expected = '"Functions": []'
+  unless `#{cmd}` =~ /#{Regexp.escape(expected)}/ 
+    raise "Sorry, AWS CLI should have credentials to access AWS Lambda"
+  end
 end
 
 Given(/^my project has the tck\-lambdas gem installed$/) do
