@@ -29,7 +29,7 @@ module Tck
           @lambda = Tck::Lambdas::AwsFunction.new(name)
 
           copy_file "Rakefile"
-          copy_file "Gemfile"
+          copy_file "Gemfile.example"
           template "templates/lambdas.yml.erb", ".lambdas.yml"
           template "templates/lambdas.rake.erb", "lib/tasks/lambdas.rake"
           copy_file "aws_function.rb", "lib/tck/lambdas/aws_function.rb"
