@@ -13,5 +13,7 @@ Given(/^i have the right crendentials in \.aws\/credentials$/) do
 end
 
 Given(/^my project has the tck\-lambdas gem installed$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  unless system("bundle show tck-lambdas")
+    raise "Sorry, tck-lambdas should be in your Gemfile."
+  end
 end
