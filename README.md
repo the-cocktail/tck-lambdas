@@ -38,11 +38,11 @@ Tal y como nos avisa ha creado, entre otras cosas, el fichero *.lambdas.yml* con
       runtime: nodejs4.3
       role: lambda_contact_form_role
 
-Todos los valores por defecto deberían ser válidos excepto el nombre de la función (_function-name_), su manejador (_handler_), y su role.
+Todos los valores por defecto deberían ser válidos excepto el nombre de la función (_function-name_), su manejador (_handler_), y su rol.
 
 En el nombre del la función y su manejador tenemos que sustituir *tck_project* por el nombre de nuestro proyecto (quedándonos con *amazing_contact_form* y *amazing_contact_form.handler* respectivamente).
 
-El role tenemos que sustituirlo por el que corresponda de los que nos devuelve AWS:
+El rol tenemos que sustituirlo por el que corresponda de los que nos devuelve AWS:
 
     aws iam list-roles --query "Roles[].[RoleName,Arn]"
 
