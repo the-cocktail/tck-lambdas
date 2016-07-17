@@ -9,7 +9,7 @@ module Tck
       attr_reader :conf
 
       def self.tmpdir
-        @tmpdir ||= Dir.tmpdir + "/tck_lambdas"
+        @tmpdir ||= Dir.tmpdir + "/tck-lambdas"
       end
 
       def self.yaml

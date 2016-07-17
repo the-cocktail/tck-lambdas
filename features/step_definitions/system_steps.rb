@@ -1,19 +1,17 @@
 Given(/^i have the AWS CLI installed in my system$/) do
-  unless system("aws --version")
-    raise "Sorry, AWS CLI should be working in your system!! :("
+  cmd = "aws --version"
+  expected = 'aws-cli'
+
+  unless `#{cmd} 2>&1` =~ /#{Regexp.escape(expected)}/ 
+    raise "Sorry, AWS CLI should be working in your system."
   end
 end
 
 Given(/^i have the right crendentials in \.aws\/credentials$/) do
   cmd = "aws lambda list-functions --max-items 0"
   expected = '"Functions": []'
-  unless `#{cmd}` =~ /#{Regexp.escape(expected)}/ 
-    raise "Sorry, AWS CLI should have credentials to access AWS Lambda"
-  end
-end
 
-Given(/^my project has the tck\-lambdas gem installed$/) do
-  unless system("bundle show tck-lambdas")
-    raise "Sorry, tck-lambdas should be in your Gemfile."
+  unless `#{cmd} 2>&1` =~ /#{Regexp.escape(expected)}/ 
+    raise "Sorry, AWS CLI should have credentials to access AWS Lambda."
   end
 end
