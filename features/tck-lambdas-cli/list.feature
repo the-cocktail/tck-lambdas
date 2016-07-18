@@ -2,7 +2,7 @@ Feature: Developer lists AWS Lambda functions available in tck-lambdas.
 
 As a Ruby developer with a library of AWS Lambda's functions
 I want to know which lambdas the tck-lambdas gem has
-So that i can choose the one that is nice for my project
+So that i can use or create the one that my project needs
 
 Scenario: List available lambdas
   Given i have the AWS CLI installed in my system
