@@ -6,15 +6,19 @@ Introducción
 
 ¿No sería fantástico que parte del build de nuestra aplicación fuese además una parte importante de su _README_ y de sus _HOWTOs_?
 
-A la vuelta de mis vacaciones voy a incorporarme a un proyecto en _The Cocktail_ al que pude echar un ojo antes de empezarlas. Lo primero que hice fue bajarme su repo y leer su _README_. No tardé mucho: estaba vacío. :(
+A la vuelta de mis vacaciones voy a incorporarme a un proyecto en _The Cocktail_ al que pude echar un ojo antes de empezarlas. Lo primero que hice fue bajarme su repo y leer su _README_. No tardé mucho: estaba vacío :(
 
-Ya me habían avisado de que la documentación estaba en _Drive_. Recordaba que el enlace me lo había mandado _Sergio_ por _Slack_ y decidí meterlo en el _README_: cuantas menos cosas tuviese que recordar mejor, y el _README_ es mi lugar favoritopara comenzar a aprender cosas de cualquier proyecto con el que comienzo a trabajar.
+Ya me habían avisado de que la documentación estaba en _Drive_. Recordaba que el enlace me lo habían mandado por _Slack_ y decidí meterlo en el _README_: cuantas menos cosas tuviese que recordar mejor, y el _README_ es mi lugar favorito para comenzar a aprender cosas de cualquier proyecto con el que comienzo a trabajar.
 
-En realidad, IMHO, se trata de un punto de entrada muy bueno para cualquier persona: **todo gira en torno al repositorio** y se trataría de encargarse de que el _README_ fuese la **tarjeta de presentación del proyecto** para aquellas personas que se incorporan al mismo sin saber nada de él.
+En realidad creo que se trata de un punto de entrada muy apropiado a cualquiera de nuestros proyectos de desarrollo: **todo gira en torno al repositorio** y se trataría de encargarse de que su _README_ fuese la **tarjeta de presentación del proyecto** para quienes se incorporan al mismo.
 
-En el peor de los casos podría ser un listado con sus enlaces más importantes. Sólo teniendo los enlaces del proyecto a _Drive_ y _Github_ ya estaría justificada su existencia. Pero si además contiene la **narrativa que debe ser ejecutada como parte de su build** entonces ya la cosa, como se suele decir, _"iría a misa"_.
+IMHO el único lugar que podría quitarle ese honor sería la portada de la _wiki_ del proyecto en _RedMine_. Todos los proyectos en _The Cocktail_ la tienen a su disposición y sin duda es una buena herramienta. Pero la realidad es que no la utilizamos en muchos de ellos, y algo parecido nos pasa con _Drive_.
 
-La gema _tck-lambdas_ tiene, por un lado, los tests de cada una de las lambdas que contiene, y por otro, sus propios tests. Los primeros están escritos haciendo uso de _Minitest_ y las posibilidades que nos ofrece _Amazon_ con su _ASW CLI_. Los segundos, los de la propia gema, están escritos con _Cucumber_ y pretenden ser, como decía al comenzar, parte de su _README_ y sus _HOWTOs_.
+El _README_ es la convención del software que utilizamos por debajo, y aunque casi siempre es ignorado nos acompaña desde nuestros principios en todos ellos. Y no tendría porque tratarse de algo difícil de mantener: en el peor de los casos podría ser **un simple listado con los enlaces más importantes**. Sólo teniendo los enlaces del proyecto a _RedMine_, _Drive_ o _Github_ ya estaría justificada su existencia.
+
+Pero si además contiene la **narrativa que debe ser ejecutada como parte de su build** entonces ya la cosa, como se suele decir, _"iría a misa"_.
+
+La gema _tck-lambdas_ tiene, por un lado, los _tests_ de cada una de las _lambdas_ que contiene, y por otro, sus propios _tests_. Los primeros están escritos haciendo uso de _Minitest_ y las posibilidades que nos ofrece _Amazon_ para testar _lambdas_ con su _ASW CLI_. Los segundos, los _tests_ de la propia gema, están escritos con _Cucumber_ y pretenden ser, como decía al comenzar, parte de su _README_ y sus _HOWTOs_.
 
 Como no podía ser de otra forma el proyecto ya tiene [su _README_](http://github.com/the-cocktail/tck-lambdas). Desde que leí [el post de _Tom Preston-Werner_ definiendo Readme Driven Development](http://tom.preston-werner.com/2010/08/23/readme-driven-development.html) me quedé infectado por la motivación detrás del mismo y me gusta aplicarlo siempre que puedo. 
 
