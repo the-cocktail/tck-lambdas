@@ -26,6 +26,10 @@ module Tck
         @conf = yaml ? yaml[@name] : {}
       end
 
+      def function_name
+        @conf['function-name'] || name
+      end
+
       def test_function_name
         "#{@conf['function-name']}_test"
       end
