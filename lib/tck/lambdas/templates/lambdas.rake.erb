@@ -1,7 +1,7 @@
 namespace :lambdas do
   namespace :<%= @lambda.name %> do
     desc "Upload tests lambda, run tests, read emails..."
-    task build: [
+    task build_lambda: [
            :upload_test,
            :test
          ]
@@ -22,8 +22,8 @@ namespace :lambdas do
       puts `aws lambda update-function-code #{params}`
     end
  
-    desc "Update the <%= @lambda.name %> lambda code (creating & uploading the ZIP file)"
-    task upload_zip: :create_zip do
+    desc "Update <%= @lambda.function_name %> lambda w/ <%= @lambda.zip_file %> (use :build_lambda first)"
+    task :upload_zip do
       tck_lambda = Tck::Lambdas::AwsFunction.new(:<%= @lambda.name %>)
 
       params = "--function-name #{tck_lambda.function_name} " <<
@@ -32,7 +32,7 @@ namespace :lambdas do
       puts `aws lambda update-function-code #{params}`
     end
  
-    desc "Generate lambda's ZIP file w/ source/* code"
+    desc "Generate lambda's ZIP file with source/* code (use :build_lambda best)"
     task :create_zip do
       tck_lambda = Tck::Lambdas::AwsFunction.new(:<%= @lambda.name %>)
       puts "Creating #{tck_lambda.zip_file}..."
