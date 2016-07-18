@@ -5,7 +5,7 @@ require_relative "../lib/tck/lambdas/aws_function"
 
 Tck::Lambdas::AwsFunction.clean_tmps!
 
-Dir['lambdas/*/'].each do |directory|
+Dir["lambdas/#{ENV["test_only_one_lambda_directory"] || '*'}/"].each do |directory|
   lambda_name = directory[8..-2]
 
   describe "The Cocktail #{lambda_name} lambda" do

@@ -1,7 +1,27 @@
 namespace :lambdas do
   namespace :<%= @lambda.name %> do
-    task test: "lambdas:test"
+    desc "Upload tests lambda, run tests, read emails..."
+    task build: [
+           :upload_test,
+           :test
+         ]
 
+    desc "Test <%= @lambda.name %> lambda"
+    task :test do
+      ENV["test_only_one_lambda_directory"] = "<%= @lambda.name %>"
+      Rake::Task["lambdas:test"].invoke
+    end
+
+    desc "Update the <%= @lambda.name %>_test lambda code (creating & uploading the ZIP file)"
+    task upload_test: :create_zip do
+      tck_lambda = Tck::Lambdas::AwsFunction.new(:<%= @lambda.name %>)
+
+      params = "--function-name #{tck_lambda.function_name}_test " <<
+               "--zip-file fileb://#{tck_lambda.zip_file}"
+
+      puts `aws lambda update-function-code #{params}`
+    end
+ 
     desc "Update the <%= @lambda.name %> lambda code (creating & uploading the ZIP file)"
     task upload_zip: :create_zip do
       tck_lambda = Tck::Lambdas::AwsFunction.new(:<%= @lambda.name %>)

@@ -6,6 +6,7 @@ load "lib/tasks/lambdas.rake"
 
 namespace :lambdas do
   Rake::TestTask.new(:test) do |t|
+    t.description = "Run all lambdas' tests"
     t.libs = %w(lib)
     t.pattern = "lambdas/test.rb"
   end
