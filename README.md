@@ -22,17 +22,18 @@ Usando una _lambda_
 Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda contact_form*. Instalamos la _gema Tck::Lambdas_ y le indicamos que nuestro proyecto hace uso de la _lambda_ llamada *contact_form*:
 
     $ echo "gem 'tck-lambdas'" >> Gemfile      # Metemos la gema en nuestro Gemfile...
-    $ bundle                                   #  - la instalamos y...
+    $ bundle                                   #  - la instalamos...
+    $ cp Rakefile Rakefile.orig                #  - nos guardamos nuestro Rakefile...
     $ bundle exec tck-lambdas use contact_form #  - y usamos la lambda:
     => lambdas/contact_form/ created with the lambda sources & tests.
     => task/lambdas/contact_form.rake created with common tasks.
     => .lambdas.yml created with the contact_form lambda conf.
-    
+ 
 Tal y como nos avisa ha creado, entre otras cosas, el fichero *.lambdas.yml* con la configuración para nuestra función _lambda_ con el siguiente contenido:
 
     contact_form:
-      function-name: tck_project_contact_form
-      handler: tck_project_contact_form.handler
+      function-name: project_name_contact_form
+      handler: project_name_contact_form.handler
       timeout: 30
       memory-size: 128
       runtime: nodejs4.3
@@ -40,15 +41,15 @@ Tal y como nos avisa ha creado, entre otras cosas, el fichero *.lambdas.yml* con
 
 Todos los valores por defecto deberían ser válidos excepto el nombre de la función (_function-name_), su manejador (_handler_), y su rol.
 
-En el nombre de la función y su manejador tenemos que sustituir *tck_project* por el nombre de nuestro proyecto (quedándonos con *amazing_contact_form* y *amazing_contact_form.handler* respectivamente).
+En el nombre de la función y su manejador tenemos que sustituir *project_name* por el nombre de nuestro proyecto (quedándonos con *amazing_contact_form* y *amazing_contact_form.handler* respectivamente).
 
-El rol tenemos que sustituirlo por el que corresponda de los que nos devuelve AWS:
+El rol tenemos que sustituirlo por **el _ARN_ completo** de un rol que tenga permisos para ejecutar los servicios que necesite nuestra _lambda_. El _ARN_ correspondiente lo podemos obtener desde la línea de comandos con ``aws iam list-roles``:
 
     aws iam list-roles --query "Roles[].[RoleName,Arn]"
 
 Con dichos cambios en nuestro *.lambdas.yml* ejecutamos la siguiente tarea de _rake_:
 
-    $ rake lambdas:contact_form:create_lambda
+    $ bundle exec rake lambdas:contact_form:create_lambda
 
 Dicha orden nos creará, **además de la función _lambda_** necesaria para el entorno de producción, **otra con el mismo nombre terminada en *_test* para la ejecución de sus tests** (en nuestro ejemplo si lanzamos ``aws lambda list-functions`` deberíamos tener dos nuevas funciones llamadas *amazing_contact_form* y *amazing_contact_form_test*).
 
