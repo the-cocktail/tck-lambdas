@@ -4,15 +4,15 @@ _Tck::Lambdas_ es una _gema_ que facilita la utilización de una _AWS Lambda_ en
 
 Por ejemplo, si tenemos una _función lambda_ llamada **shine** y queremos subir una mejora en su código tendríamos que, por un lado generar el _zip_ con dicha mejora, y por otro actualizar el mismo en _AWS Lambda_ (con la función ``aws lambda update-function-code`` o a través de su consola web).
     
-Si hemos instalado la gema _Tck::Lambdas_ en nuestro proyecto y hemos indicado en que el mismo hace uso de la _lambda shine_ (bundle exec ``tck-lambdas use shine``), lanzaríamos la siguiente orden para crear el _zip_:
+Si hemos instalado la gema _Tck::Lambdas_ en nuestro proyecto y hemos indicado que utilizamos la _lambda shine_ (bundle exec ``tck-lambdas use shine``), lanzaríamos la siguiente orden para crear el _zip_:
 
     $ rake lambdas:shine:create_zip
 
-Y esta para subir el mismo a _AWS Lambda_ (para _"desplegar"_ la mejora):
+Y esta para subir dicho _zip_ a _AWS Lambda_ (para _"desplegar"_ la mejora):
 
     $ rake lambdas:shine:upload_zip
 
-Si sólo tenemos esa _lambda_, creando el _alias_ necesario en nuestro _Rakefile_ (``task deploy_lambda: "lambdas:shine:upload_zip"``) podríamos lanzar simplemente:
+Si sólo tenemos esa _lambda_ en el proyecto, creando el _alias_ necesario en nuestro _Rakefile_ (``task deploy_lambda: "lambdas:shine:upload_zip"``) podríamos lanzar simplemente:
 
     $ rake deploy_lambda
 
@@ -40,7 +40,7 @@ Tal y como nos avisa ha creado, entre otras cosas, el fichero *.lambdas.yml* con
 
 Todos los valores por defecto deberían ser válidos excepto el nombre de la función (_function-name_), su manejador (_handler_), y su rol.
 
-En el nombre del la función y su manejador tenemos que sustituir *tck_project* por el nombre de nuestro proyecto (quedándonos con *amazing_contact_form* y *amazing_contact_form.handler* respectivamente).
+En el nombre de la función y su manejador tenemos que sustituir *tck_project* por el nombre de nuestro proyecto (quedándonos con *amazing_contact_form* y *amazing_contact_form.handler* respectivamente).
 
 El rol tenemos que sustituirlo por el que corresponda de los que nos devuelve AWS:
 
@@ -99,7 +99,7 @@ Or install it yourself as:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/tck-lambdas. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/the-cocktail/tck-lambdas. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
