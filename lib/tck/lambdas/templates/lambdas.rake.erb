@@ -14,6 +14,7 @@ namespace :lambdas do
 
     desc "Update the <%= @lambda.name %>_test lambda code (creating & uploading the ZIP file)"
     task upload_test: :create_zip do
+      FileUtils.mkdir_p Tck::Lambdas::AwsFunction.tmpdir
       tck_lambda = Tck::Lambdas::AwsFunction.new(:<%= @lambda.name %>)
 
       params = "--function-name #{tck_lambda.function_name}_test " <<
