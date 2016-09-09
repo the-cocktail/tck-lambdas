@@ -54,7 +54,6 @@ namespace :lambdas do
       tck_lambda.conf.each do |prop, value|
         puts "    - #{prop}: #{value}"
       end
-      []
       printf "\nContinue?? Press [Ctrl+C] to cancel."
       STDIN.gets
       [tck_lambda.function_name, tck_lambda.test_function_name].each do |function_name|

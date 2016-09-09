@@ -48,7 +48,7 @@ module Tck
       end
 
       def zip_file
-        @zip_file ||= "../#{function_name}.zip"
+        @zip_file ||= "#{Dir.pwd}/#{dir}/#{function_name}.zip"
       end
 
       def invoke_events_in_directory(event_type)
