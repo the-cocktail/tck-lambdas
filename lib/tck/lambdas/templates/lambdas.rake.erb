@@ -1,6 +1,6 @@
 namespace :lambdas do
   namespace :<%= @lambda.name %> do
-    desc "Update tests lambda and test it (create_zip+upload_tests+test)."
+    desc "Upload tests lambda, run tests, read emails..."
     task build_lambda: [
            :upload_test,
            :test
@@ -14,7 +14,6 @@ namespace :lambdas do
 
     desc "Update the <%= @lambda.name %>_test lambda code (creating & uploading the ZIP file)"
     task upload_test: :create_zip do
-      FileUtils.mkdir_p Tck::Lambdas::AwsFunction.tmpdir
       tck_lambda = Tck::Lambdas::AwsFunction.new(:<%= @lambda.name %>)
 
       params = "--function-name #{tck_lambda.function_name}_test " <<
@@ -44,6 +43,7 @@ namespace :lambdas do
             "mv #{tck_lambda.function_name}.js #{tck_lambda.name}.js"
       puts cmd
       puts `#{cmd}`
+      puts "Lambda's ZIP file ./lambdas/<%= @lambda.name %>/#{tck_lambda.function_name}.zip created!!"
     end
 
     desc "Create the <%= @lambda.name %> lambda function in AWS Lambda w/ .lambda.yml."

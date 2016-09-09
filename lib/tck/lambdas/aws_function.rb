@@ -48,11 +48,10 @@ module Tck
       end
 
       def zip_file
-        @zip_file ||= "#{tmpdir}/#{function_name}.zip"
+        @zip_file ||= "../#{function_name}.zip"
       end
 
       def invoke_events_in_directory(event_type)
-puts "lambdas/#{name}/#{event_type}/*.json"
         Dir["lambdas/#{name}/test/#{event_type}/*.json"].each do |json_file|
           filename = File.basename(json_file)
           output = "#{tmpdir}/#{filename}.output"
