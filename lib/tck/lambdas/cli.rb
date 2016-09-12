@@ -49,6 +49,13 @@ module Tck
           raise "Sorry, '#{name}' is not a valid lambda name."
         end
       end
+
+      desc "roles", "List current AWS IAM roles (running 'aws iam list-roles [...]')."
+      def roles
+        cmd = 'aws iam list-roles --query "Roles[].[RoleName,Arn]"'
+        puts cmd
+        puts `#{cmd}`
+      end
     end
   end
 end
