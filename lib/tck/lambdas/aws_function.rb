@@ -13,7 +13,17 @@ module Tck
       end
 
       def self.yaml
-        @yaml ||= File.exist?('.lambdas.yml') ? YAML.load_file('.lambdas.yml') : nil
+        if File.exist?('.lambdas.yml')
+          current_timestamp = File.mtime('.lambdas.yml')
+          if @timestamp == current_timestamp
+            @yaml
+          else
+            @timestamp = current_timestamp
+            @yaml = YAML.load_file('.lambdas.yml')
+          end
+        else
+          {}
+        end
       end
 
       def self.clean_tmps!
@@ -23,7 +33,8 @@ module Tck
 
       def initialize(name)
         @name = name.to_s
-        @conf = yaml ? yaml[@name] : {}
+        @conf = yaml && yaml[@name] || {}
+        @timestamp = nil
       end
 
       def function_name
