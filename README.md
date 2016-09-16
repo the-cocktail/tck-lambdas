@@ -24,7 +24,7 @@ Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y quer
     $ echo "gem 'tck-lambdas'" >> Gemfile      # Metemos la gema en nuestro Gemfile...
     $ bundle                                   #  - la instalamos...
     $ cp Rakefile Rakefile.orig                #  - nos guardamos nuestro Rakefile...
-    $ bundle exec tck-lambdas use contact_form #  - y usamos la lambda:
+    $ tck-lambdas use contact_form #  - y usamos la lambda:
     => lambdas/contact_form/ created with the lambda sources & tests.
     => task/lambdas/contact_form.rake created with common tasks.
     => .lambdas.yml created with the contact_form lambda conf.
@@ -38,18 +38,17 @@ Tal y como nos avisa ha creado, entre otras cosas, el fichero *.lambdas.yml* con
       memory-size: 128
       runtime: nodejs4.3
       role: lambda_contact_form_role
+      description: Project-Name instance of the Tck's contact_form lambda
 
 Todos los valores por defecto deberían ser válidos excepto el nombre de la función (_function-name_), su manejador (_handler_), y su rol.
 
 En el nombre de la función y su manejador tenemos que sustituir *project_name* por el nombre de nuestro proyecto (quedándonos con *amazing_contact_form* y *amazing_contact_form.handler* respectivamente).
 
-El rol tenemos que sustituirlo por **el _ARN_ completo** de un rol que tenga permisos para ejecutar los servicios que necesite nuestra _lambda_. El _ARN_ correspondiente lo podemos obtener desde la línea de comandos con ``aws iam list-roles``:
-
-    aws iam list-roles --query "Roles[].[RoleName,Arn]"
+El rol tenemos que sustituirlo por **el _ARN_ completo** de un rol que tenga permisos para ejecutar los servicios que necesite nuestra _lambda_. El comando **tck-lambdas roles** nos devuelve los _ARN_ de los distintos roles que tenemos a nuestra disposición en _AWS Lambda_.
 
 Con dichos cambios en nuestro *.lambdas.yml* ejecutamos la siguiente tarea de _rake_:
 
-    $ bundle exec rake lambdas:contact_form:create_lambda
+    $ rake lambdas:contact_form:create_lambda
 
 Dicha orden nos creará, **además de la función _lambda_** necesaria para el entorno de producción, **otra con el mismo nombre terminada en *_test* para la ejecución de sus tests** (en nuestro ejemplo si lanzamos ``aws lambda list-functions`` deberíamos tener dos nuevas funciones llamadas *amazing_contact_form* y *amazing_contact_form_test*).
 
