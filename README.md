@@ -39,10 +39,26 @@ Vamos a meter un _formulario de contacto_ en nuestro proyecto **Amazing** y quer
     $ echo "gem 'tck-lambdas'" >> Gemfile      # Metemos la gema en nuestro Gemfile...
     $ bundle                                   #  - la instalamos...
     $ cp Rakefile Rakefile.orig                #  - nos guardamos nuestro Rakefile...
-    $ tck-lambdas use contact_form #  - y usamos la lambda:
-    => lambdas/contact_form/ created with the lambda sources & tests.
-    => task/lambdas/contact_form.rake created with common tasks.
-    => .lambdas.yml created with the contact_form lambda conf.
+    $ tck-lambdas use contact_form             #  - y usamos la lambda:
+    /usr/lib/ruby/gems/[...]/lib/tck/lambdas/contact_form
+          create  Rakefile
+          create  Gemfile.example
+          create  .lambdas.yml
+          create  lib/tasks/lambdas.rake
+          create  lib/tck/lambdas/aws_function.rb
+          create  lambdas/test.rb
+          create  lambdas/contact_form
+          create  lambdas/contact_form/source/conf.js
+          create  lambdas/contact_form/source/contact_form.js
+          create  lambdas/contact_form/source/utils.js
+          create  lambdas/contact_form/test/failed/domain_empty.json
+          create  lambdas/contact_form/test/failed/domain_not_found.json
+          create  lambdas/contact_form/test/failed/email_empty.json
+          create  lambdas/contact_form/test/failed/email_format.json
+          create  lambdas/contact_form/test/failed/message_empty.json
+          create  lambdas/contact_form/test/succeeded/basic.json
+          create  lambdas/contact_form/test/succeeded/with_cc.json
+    $
  
 Tal y como nos avisa ha creado, entre otras cosas, el fichero *.lambdas.yml* con la configuración para nuestra función _lambda_ con el siguiente contenido:
 
@@ -55,7 +71,7 @@ Tal y como nos avisa ha creado, entre otras cosas, el fichero *.lambdas.yml* con
       role: lambda_contact_form_role
       description: Project-Name instance of the Tck's contact_form lambda
 
-Todos los valores por defecto deberían ser válidos excepto el nombre de la función (_function-name_), su manejador (_handler_), y su rol.
+Todos los valores por defecto deberían ser válidos excepto el nombre de la función (_function-name_), su manejador (_handler_), y su rol (_role_).
 
 En el nombre de la función y su manejador tenemos que sustituir *project_name* por el nombre de nuestro proyecto (quedándonos con *amazing_contact_form* y *amazing_contact_form.handler* respectivamente).
 
