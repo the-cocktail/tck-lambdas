@@ -16,10 +16,25 @@ Si sólo tenemos esa _lambda_ en el proyecto, creando el _alias_ necesario en nu
 
     $ rake deploy_lambda
 
-Usando una _lambda_
--------------------
+Comandos de _tck-lambdas_
+-------------------------
 
-Vamos a meter un _formulario de contacto_ en nuestro **proyecto Amazing** y queremos usar la *lambda contact_form*. Instalamos la _gema Tck::Lambdas_ y le indicamos que nuestro proyecto hace uso de la _lambda_ llamada *contact_form*:
+Si lanzamos su ayuda nos cuenta lo siguiente:
+
+    $ tck-lambdas help
+    Commands:
+      tck-lambdas all             # List all AWS Lambdas currently available in tck-lambdas.
+      tck-lambdas help [COMMAND]  # Describe available commands or one specific command
+      tck-lambdas roles           # List current AWS IAM roles (running 'aws iam list-roles [...]').
+      tck-lambdas use NAME        # Use the AWS Lambda function known as NAME at The Cocktail.
+      tck-lambdas used            # List functions currently used by this project.
+
+**GOTCHA**: Tenemos también el *indocumentado comando* ``tck-lambdas list``, que es un _alias_ de ``tck-lambdas used``, **NO** de ``tck-lambdas all`` :)
+
+Caso de Uso: *lambda contact_form*
+----------------------------------
+
+Vamos a meter un _formulario de contacto_ en nuestro proyecto **Amazing** y queremos usar la *lambda contact_form*. Instalamos la _gema Tck::Lambdas_ y le indicamos que nuestro proyecto hace uso de la _lambda_ llamada *contact_form*:
 
     $ echo "gem 'tck-lambdas'" >> Gemfile      # Metemos la gema en nuestro Gemfile...
     $ bundle                                   #  - la instalamos...
