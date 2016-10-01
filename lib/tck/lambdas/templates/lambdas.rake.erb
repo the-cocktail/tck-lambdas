@@ -1,6 +1,6 @@
 namespace :lambdas do
   namespace :<%= @lambda.name %> do
-    desc "Upload tests lambda, run tests, read emails..."
+    desc "Update tests lambda and run its tests."
     task build_lambda: [
            :upload_test,
            :test

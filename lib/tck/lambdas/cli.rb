@@ -21,9 +21,9 @@ module Tck
 
       desc "used", "List functions currently used by this project."
       def used
-        puts "Functions currently used by this project:"
         yaml = Tck::Lambdas::AwsFunction.yaml
         if yaml.any?
+          puts "Functions currently used by this project:"
           yaml.each do |lambda_name, properties|
             puts " - #{properties["function-name"]} (cloned from '#{lambda_name}')"
           end
