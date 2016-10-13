@@ -3,5 +3,5 @@
 
 module.exports.<%= @lambda.name %> = (event, context) => {
   var lambda = require('./lambdas/<%= @lambda.name %>/source/<%= @lambda.name %>');
-  lambda(event, context);
+  lambda.handler(event, context);
 };
