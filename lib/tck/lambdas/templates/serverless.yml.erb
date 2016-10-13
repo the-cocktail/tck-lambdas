@@ -1,0 +1,15 @@
+service: service_using_<%= @lambda.name %>
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: dev
+#  region: eu-west-1
+
+functions:
+  <%= @lambda.name %>:
+    handler: handler.<%= @lambda.name %>
+    events:
+      - http:
+          path: <%= @lambda.name %>
+          method: get

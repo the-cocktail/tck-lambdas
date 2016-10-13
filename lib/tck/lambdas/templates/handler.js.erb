@@ -1,0 +1,7 @@
+/* Copyright 2016 The Cocktail Experience, S.L. */
+'use strict';
+
+module.exports.<%= @lambda.name %> = (event, context) => {
+  var lambda = require('./lambdas/<%= @lambda.name %>/source/<%= @lambda.name %>');
+  lambda(event, context);
+};
