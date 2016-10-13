@@ -11,6 +11,11 @@ module Tck
         File.dirname(__FILE__)
       end
 
+      desc "version", "Show tck-lambdas version."
+      def version
+        puts "tck-lambdas v" + Tck::Lambdas::VERSION
+      end
+
       desc "all", "List all AWS Lambdas currently available in tck-lambdas."
       def all
         puts "Available functions in tck-lambdas:"
