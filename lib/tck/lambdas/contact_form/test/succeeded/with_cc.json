@@ -1,9 +1,12 @@
 {
-  "domain": "the-cocktail.com",
-  "name": "Probando Nueva Lambda",
-  "company": "TckExperience",
-  "phone": "6123456789",
-  "email": "tcklambdas@gmail.com",
-  "cc": "1",
-  "message": "Disculpa las molestias"
+  'body': '\
+    {\
+      "domain": "the-cocktail.com",\
+      "name": "Probando Nueva Lambda",\
+      "company": "TckExperience",\
+      "phone": "600123456",\
+      "email": "tcklambdas@gmail.com",\
+      "cc": "1",\
+      "message": "Disculpa las molestias"\
+    }'
 }

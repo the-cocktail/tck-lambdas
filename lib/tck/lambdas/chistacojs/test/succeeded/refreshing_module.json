@@ -1,1 +1,3 @@
-{ "module": "refreshing" }
+{
+  'body': '{ "module": "refreshing" }'
+}
