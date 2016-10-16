@@ -33,10 +33,13 @@ block <<-EOS
 EOS
 
 center <<-EOS
-  I don't want to be
+  #{BOLD}DISCLAIMER#{OFF}
+  ───────────────────────
+  I don't want to become
   the "Leeroy Jenkins"
   of the Serverless
-  #{BOLD}amazing#{OFF} community
+  #{BOLD}amazing community#{OFF}
+  with tck-lambdas
 EOS
 
 center <<-EOS
@@ -48,6 +51,26 @@ center <<-EOS
   passed away in 2014
 EOS
 
+center <<-EOS
+  https://github.com/
+  #{BOLD}the-cocktail/#{RED}tck-lambdas#{OFF}
+
+  is a #{RED}Ruby#{OFF} gem
+  to reuse #{BOLD}common#{OFF}
+  AWS-Lambdas
+EOS
+
+center <<-EOS
+  https://github.com/
+  #{BOLD}serverless/#{BLUE}serverless#{OFF}
+
+  is a #{BLUE}NodeJs#{OFF} framework
+  to build a #{BOLD}serverless#{OFF}
+  service
+
+  (previously known as #{BOLD}Jaws#{OFF})
+EOS
+
 block <<-EOS
 ~ mkdir conferenciarails
 ~ cd conferenciarails
@@ -55,8 +78,8 @@ block <<-EOS
 EOS
 
 block <<-EOS
-~ tck-lambdas #{BOLD}use chistacojs#{OFF}
 ~ tck-lambdas #{BOLD}use contact_form#{OFF}
+~ tck-lambdas #{BOLD}use chistacojs#{OFF}
 ~ vim #{BOLD}serverless.yml#{OFF}
 EOS
 
