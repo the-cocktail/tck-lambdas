@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 BOLD = "\e[1m"
 OFF = "\e[0m"
 RED = "\e[31m"
@@ -6,8 +8,6 @@ YELLOW = "\e[33m"
 BLUE = "\e[34m"
 PINK = "\e[35m"
 LIGHT_BLUE = "\e[36m"
-
-# encoding: utf-8
 block <<-EOS
   ┌──────────────────────────────┐
   │  #{BOLD}#{RED}❧ Conferencia Rails 2016 ☙#{OFF}  │
