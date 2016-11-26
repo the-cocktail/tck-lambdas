@@ -126,7 +126,9 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install tck-lambdas
+    $ gem install tck-lambdas --no-document
+
+**NOTE**: use the **--no-document** option to avoid indexing lambdas's sources.
 
 ## Contributing
 
